@@ -2,7 +2,9 @@
     "files.associations": {
         "iostream": "cpp",
         "string": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "charconv": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "cmake.configureOnOpen": true
 }
