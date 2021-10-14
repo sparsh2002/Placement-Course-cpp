@@ -3,7 +3,9 @@
         "iostream": "cpp",
         "string": "cpp",
         "*.tcc": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": true
