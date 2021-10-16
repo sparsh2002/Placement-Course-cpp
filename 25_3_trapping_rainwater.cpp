@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// halka halka
+
 int rain_water(vector <int>  a){
     stack <int> st;
     int n = a.size() , ans = 0;
