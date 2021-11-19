@@ -5,7 +5,7 @@
 #include<cmath>
 using namespace std;
 
-void countSort(int *arr , int n){
+void t(int *arr , int n){
     int max = arr[0];
     // finding the maximum element in an array
     for(int i =0 ; i < n ; i++){
@@ -59,6 +59,6 @@ int main(){
     for(int i=0 ; i< n ; i++){
         cin >> arr[i];
     }
-    countSort(arr, n);
+    t(arr, n);
     return 0;
 }
