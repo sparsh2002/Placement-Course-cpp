@@ -16,11 +16,11 @@ double EPS = 1e-9;
 const ll N = 10000000;
 double PI = acos(-1);
 
-vector<int> previousSmallerNumber(vector<int> arr){
+vector<int> nextSmallerNumber(vector<int> arr){
     int n = arr.size();
     vector<int> ans;
     stack<int> st;
-    for(int i=0 ;i<n ;i++){
+    for(int i=n-1 ;i>=0 ;i--){
         if(st.empty()){
             ans.push_back(-1);
             st.push(arr[i]);
@@ -44,39 +44,7 @@ vector<int> previousSmallerNumber(vector<int> arr){
             }
         }
     }
-    return ans;
-}
-
-vector<int> previousSmallerNumberIndexWise(vector<int> arr){
-    int n = arr.size();
-    vector<int> ans;
-    stack<int> st;
-    for(int i=0 ; i<n ; i++){
-        if(st.empty()){
-            ans.push_back(-1);
-            st.push(arr[i]);
-        }
-        else{
-            if(arr[i]<st.top()){
-                int ct = i;
-                while((!st.empty()) and (arr[i]<st.top())){
-                    st.pop();
-                    ct--;
-                }
-                if(st.empty()){
-                    ans.push_back(-1);
-                }
-                else{
-                    ans.push_back(ct-1);
-                }
-                st.push(arr[i]);
-            }
-            else{
-                ans.push_back(i-1);
-                st.push(arr[i]);
-            }
-            }
-        }
+    reverse(ans.begin() , ans.end());
     return ans;
 }
 
@@ -90,10 +58,10 @@ int main(){
         cin >> arr[i];
     }
     vector<int> ans;
-    // ans = previousSmallerNumber(arr);
-    ans = previousSmallerNumberIndexWise(arr);
+    ans = nextSmallerNumber(arr);
     for(int i=0 ; i<n ; i++){
         cout << ans[i] << " ";
     }
+
     return 0;
 }
