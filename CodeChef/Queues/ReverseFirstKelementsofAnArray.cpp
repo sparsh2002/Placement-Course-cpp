@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-// #include<iostream>
-// #include<queue>
-// #include<vector>
 using namespace std;
 typedef long long ll;
 typedef pair<int, int> pii;
@@ -17,42 +14,50 @@ typedef vector<vl> vvl;
 long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 const ll N = 10000000;
-// double PI = acos(-1);
+double PI = acos(-1);
 
-void solve(vector<int> arr , int n , int p){
-    queue<int> q;
+void reverseKelements(vector<int> &arr , int n , int k){
+    queue <int> q;
+    stack <int> st;
     for(int i=0 ; i<n ; i++){
         q.push(arr[i]);
     }
-    int ct = 0;
-    for(int i=0 ; i<n ; i++){
-        cout << arr[i] << " ";
-        ct++;
-    }
-    while(ct<p){
-        int x = q.front();
+    int x;
+    for(int i=0 ; i<k ; i++){
+        x = q.front();
         q.pop();
-        for(int i=0 ; i<n ; i++){
-            int ans = stoi(to_string(x)+to_string(arr[i])) ;
-            q.push(ans);
-            cout << ans << " ";
-            ct++;
-            if(ct==p){
-                break;
-            }
-        }
+        st.push(x);
+    }
+    while(!st.empty()){
+        x = st.top();
+        st.pop();
+        q.push(x);
+    }
+
+    for(int i=0 ; i<n-k ; i++){
+        x = q.front();
+        q.pop();
+        q.push(x);
+    }
+
+    for(int i=0 ; i<n ; i++){
+        arr[i] = q.front();
+        q.pop();
     }
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    int n ,p;
-    cin >> n >> p;
+    int n , k;
+    cin >> n >> k;
     vector<int> arr(n);
     for(int i=0 ; i<n ; i++){
         cin >> arr[i];
     }
-    solve(arr,n , p);
+    reverseKelements(arr, n , k);
+    for(int i=0 ; i<n ; i++){
+        cout << arr[i] << " ";
+    }
     return 0;
 }
