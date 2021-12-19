@@ -75,7 +75,8 @@ int main(){
     cout << q.front() << " ";
     q.pop();
     q.pop();
+    q.pop();
     cout << q.front() << " ";
-    
+     
     return 0;
 }
