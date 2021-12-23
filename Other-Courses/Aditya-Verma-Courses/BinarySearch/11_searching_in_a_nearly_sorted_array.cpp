@@ -16,20 +16,24 @@ double EPS = 1e-9;
 const ll N = 10000000;
 double PI = acos(-1);
 
-int rotation(int * arr , int n){
+int nearlySortedSearch(int * arr , int n , int key){
     int low = 0 , high = n-1;
     while(low<=high){
-        int mid = (low+high)/2;
-        int next = (mid+1)%n;
-        int prev = (mid+n-1)%n;
-        if(arr[mid]<=arr[next]  and arr[mid]<=arr[prev]){
+        int mid = low + (high-low)/2;
+        if(arr[mid]==key){
             return mid;
         }
-        else if(arr[mid]<=arr[high]){
-            high = mid-1;
+        else if((mid-1)>=low and arr[mid-1]==key){
+            return mid-1;
         }
-        else if(arr[low] <= arr[mid]){
-            low = mid+1;
+        else if((mid+1)<=high  and arr[mid+1]==key){
+            return mid+1;
+        }
+        else if(key<=arr[mid]){
+            low = mid-2;
+        }
+        else{
+            high = mid+2;
         }
     }
     return -1;
@@ -44,7 +48,9 @@ int main(){
     for(int i=0 ; i<n ; i++){
         cin >> arr[i];
     }
-    int ans = rotation(arr , n);
+    int key;
+    cin >> key;
+    int ans = nearlySortedSearch(arr , n , key);
     cout << ans << "\n";
     return 0;
 }
