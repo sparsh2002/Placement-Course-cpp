@@ -30,7 +30,7 @@ class Solution{
 int main() {
 
     int T;
-    cin >> T;//testcases
+    cin >> T;//testcasesx
     while (T--) {
         
         int N;
