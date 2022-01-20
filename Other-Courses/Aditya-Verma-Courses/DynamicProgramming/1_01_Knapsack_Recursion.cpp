@@ -21,11 +21,20 @@ class Solution
         }
         solve(W , wt ,val ,i+1 , profit , n);
     }
+    int knapsack(int W , int wt[] , int val[] , int n){
+        if(n==0 or W==0){
+            return 0;
+        }
+        if(wt[n-1]<=W){
+            return max(val[n-1]+knapsack(W-wt[n-1] , wt , val , n-1) , 
+            knapsack(W , wt , val , n-1) );
+        }
+        return knapsack(W , wt , val , n-1);
+    }
     int knapSack(int W, int wt[], int val[], int n) 
     { 
-       // Your code here
-       solve(W , wt , val , 0 , 0 , n);
-       return maxProfit;
+       int ans = knapsack(W , wt , val , n);
+       return ans;
     }
 };
 
