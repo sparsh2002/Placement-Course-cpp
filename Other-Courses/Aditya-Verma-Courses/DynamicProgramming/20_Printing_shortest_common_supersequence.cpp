@@ -34,7 +34,7 @@ public:
              }
             else{
                 if(t[i][j-1]>t[i-1][j]){
-                     s.push_back(b[j-1]);
+                    s.push_back(b[j-1]);
                     j--;
                     
                 }
