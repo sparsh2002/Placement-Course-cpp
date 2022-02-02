@@ -6,46 +6,54 @@ using namespace std;
 
  // } Driver Code Ends
 // User function Template for C++
+
 class Solution{
-     int dp[501][501];
 public:
- bool isPalidromic(string &s,int start,int end){
-      if(start==end || start>end)
-          return true;
-       while(start<end)
-       {
-           if(s[start] != s[end])
-               return false;
-           
-           start++;
-           end--;
-       } 
-       return true;
-   }
-   
-   
-    int minCostPartition(string &s, int i, int j){
-        int mn=INT_MAX;
-        if(i>=j)
-          return 0;
-        if(isPalidromic(s,i,j))
+    int t[501][501];
+    bool isPallindrome(string &s , int i , int j){
+        if(i==j){
+            return true;
+        }
+        if(i>j){
+            return true;
+        }
+        while(i<j){
+            if(s[i]!=s[j]){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+    
+    int solve(string &s , int i , int j){
+        if(i>=j){
             return 0;
-        if(dp[i][j]!=-1)
-            return dp[i][j];
-      
-        for(int k=i;k<j;k++){
-            int x=minCostPartition(s,i,k)+minCostPartition(s,k+1,j)+1;
-            if(x<mn)
-              mn=x;
-         }
-         return dp[i][j]=mn;
-    } 
-   
-   int palindromicPartition(string str)
-   {
-        memset(dp,-1,sizeof(dp));
-        return minCostPartition(str,0,str.length()-1);
-   }
+        }
+        if(isPallindrome(s , i , j)){
+            return 0;
+        }   
+        if(t[i][j]!=-1){
+            return t[i][j];
+        }
+        
+       
+        int mn = INT_MAX;
+        
+        for(int k = i ; k<j ; k++){
+            int temp = solve(s , i , k)+solve(s , k+1 , j)+1;
+            if(temp<mn){
+                mn = temp;
+            }
+        }
+        return t[i][j] =  mn;
+    }
+    int palindromicPartition(string s)
+    {
+        memset(t , -1 , sizeof(t));
+        return solve(s , 0 , s.size()-1);
+    }
 };
 
 // { Driver Code Starts.
