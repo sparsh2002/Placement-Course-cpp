@@ -20,7 +20,8 @@
         "limits": "cpp",
         "random": "cpp",
         "semaphore": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "iterator": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": true
