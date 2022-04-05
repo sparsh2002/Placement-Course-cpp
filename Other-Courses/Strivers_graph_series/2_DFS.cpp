@@ -53,10 +53,10 @@ int main(){
     }
 
 
-    vector<bool> vis(n+1 , false);
+    vector<bool> vis(n , false);
     vector<int> dfs;
     
-    for(int i=1 ; i<=n ; i++){
+    for(int i=1 ; i<n ; i++){
         if(!vis[i])dfsOfGraph(i ,adj  , vis , dfs);
     }
 

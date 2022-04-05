@@ -18,9 +18,9 @@ double PI = acos(-1);
 
 vector<int> bfsOfGraph(int v , vector<vector<int> > &adj){
     vector<int> bfs;
-    vector<int> vis(v+1 , 0);
+    vector<int> vis(v , 0);
 
-    for(int i=1 ; i<=v ; i++){
+    for(int i=1 ; i<v ; i++){
         if(!vis[i]){
             queue<int> q;
             q.push(i);
@@ -57,7 +57,7 @@ int main(){
     vector<int> t;
     adj.push_back(t);
 
-    for(int i=0 ; i<n ; i++){
+    for(int i=1 ; i<n ; i++){
         int x;
         cin >> x;
         vector<int> temp;
