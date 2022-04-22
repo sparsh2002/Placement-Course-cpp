@@ -22,7 +22,8 @@
         "semaphore": "cpp",
         "valarray": "cpp",
         "iterator": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "complex": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": true
