@@ -24,7 +24,9 @@
         "iterator": "cpp",
         "set": "cpp",
         "complex": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "__locale": "cpp",
+        "regex": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": true
