@@ -6,4 +6,8 @@ int main(){
 	int n;
 	cin >> n;
 	cout << n << "\n";
+	int arr[] = {3,4,1,4,5};
+	for(auto x:arr){
+		cout << x << "\n";
+	}
 }

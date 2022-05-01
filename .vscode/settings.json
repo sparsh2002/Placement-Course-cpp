@@ -26,8 +26,12 @@
         "complex": "cpp",
         "tuple": "cpp",
         "__locale": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "utility": "cpp",
+        "unordered_map": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "C_Cpp.default.cppStandard": "gnu++11",
+    "C_Cpp.default.cStandard": "c11"
 }
