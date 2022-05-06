@@ -17,11 +17,13 @@ const ll N = 10000000;
 double PI = acos(-1);
 
 bool isBipartite(int node  , int prev, vector<int> &vis , vector<vector<int> > &adj){
+    if(prev==1) vis[node]= 0;
+    else vis[node] = 1;
     for(int i=0 ; i<adj[node].size() ; i++){
        if(vis[adj[node][i]]==-1){
-           if(vis[node]==1) vis[adj[node][i]] = 0;
-           else vis[adj[node][i]] = 1;
-           return isBipartite(adj[node][i] , vis[adj[node][i]] , vis , adj);
+        //    if(vis[prev]==1) vis[adj[node][i]] = 0;
+        //    else vis[adj[node][i]] = 1;
+           return isBipartite(adj[node][i] , vis[node] , vis , adj);
        }
        else if(vis[adj[node][i]]==vis[node]){
         //    cout << node << " " << adj[node][i] << "\n";
