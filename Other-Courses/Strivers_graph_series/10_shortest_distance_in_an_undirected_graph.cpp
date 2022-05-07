@@ -34,6 +34,26 @@ int shortestPath(int src  , int dst , vector<vector<int> > &adj){
     return dist[dst]-dist[src];
 }
 
+void shortestPathArray(int src , vector<vector<int> > &adj){
+    vector<int> dist(adj.size()+1 , INT_MAX);
+    dist[src] = 0;
+    queue<int> q;
+    q.push(src);
+    while(!q.empty()){
+        int node = q.front();
+        q.pop();
+        for(int i=0 ; i<adj[node].size() ; i++){
+            if(dist[node]+1<dist[adj[node][i]]){
+                q.push(adj[node][i]);
+                dist[adj[node][i]] = dist[node]+1;
+            }
+        }
+    }
+    for(int i=0 ; i<adj.size() ; i++){
+        cout << dist[i] << " " ;
+    }cout << "\n";
+}
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
@@ -61,8 +81,10 @@ int main(){
     //     }cout << "\n";
     // }
 
-    int src , dst;
-    cin >> src >> dst;
-    cout << shortestPath(src , dst , adj) << "\n";
+    // int src , dst;
+    // cin >> src >> dst;
+    // cout << shortestPath(src , dst , adj) << "\n";
+
+    shortestPathArray(0 , adj);
     return 0;
 }
