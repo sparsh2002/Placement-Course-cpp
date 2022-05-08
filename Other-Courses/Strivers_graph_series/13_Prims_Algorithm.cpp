@@ -22,11 +22,11 @@ int main(){
     for (int i = 0; i < N; i++) 
         key[i] = INT_MAX, mstSet[i] = false; 
     
-    priority_queue< pair<int,int>, vector <pair<int,int>> , greater<pair<int,int>> > pq;
+    priority_queue< pair<int,int>, vector <pair<int,int> > , greater<pair<int,int> > > pq;
 
     key[0] = 0; 
     parent[0] = -1; 
-    pq.push({0, 0});
+    pq.push(make_pair(0, 0));
     // Run the loop till all the nodes have been visited
     // because in the brute code we checked for mstSet[node] == false while computing the minimum
     // but here we simply take the minimal from the priority queue, so a lot of times a node might be taken twice
@@ -41,6 +41,13 @@ int main(){
     // 1 4 200
     // 3 4 250
     // 4 5 50 
+    
+    // for(int i=0 ; i<N ; i++){
+    //     cout << i << "->";
+    //     for(int j=0 ; j<adj[i].size() ; j++){
+    //         cout << "{" << adj[i][j].first << " "<< adj[i][j].second << "} " ;
+    //     }cout << "\n";
+    // }
     while(!pq.empty())
     { 
         int u = pq.top().second; 
@@ -48,13 +55,13 @@ int main(){
         
         mstSet[u] = true; 
         
-        for (auto it : adj[u]) {
-            int v = it.first;
-            int weight = it.second;
+        for (int i=0 ; i<adj[u].size() ; i++) {
+            int v = adj[u][i].first;
+            int weight = adj[u][i].second;
             if (mstSet[v] == false && weight < key[v]) {
                 parent[v] = u;
-		key[v] = weight; 
-                pq.push({key[v], v});    
+		        key[v] = weight; 
+                pq.push(make_pair(key[v], v));    
             }
         }
             
