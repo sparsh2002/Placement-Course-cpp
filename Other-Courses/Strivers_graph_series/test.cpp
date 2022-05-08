@@ -1,13 +1,49 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<pii> vii;
+typedef vector<ll> vl;
+typedef vector<vl> vvl;
+
+#define rep(i,a,b) for(int i=a ; i<b ; i++)
+
+long long INFF = 1000000000000000005LL;
+double EPS = 1e-9;
+const ll N = 10000000;
+double PI = acos(-1);
 
 int main(){
-	cout << "Hello World"  << "\n";
-	int n;
-	cin >> n;
-	cout << n << "\n";
-	int arr[] = {3,4,1,4,5};
-	for(auto x:arr){
-		cout << x << "\n";
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+	int t;
+	cin >> t;
+	while(t--){
+		string arr;
+		cin >> arr;
+		int n = arr.size();
+        string ans = "";
+        string c = "";
+        for(int i=0 ; i<n-2 ; i++){
+            int curr = arr[i];
+            bool yes = true;
+            for(int j=i ; j<i+3 ; j++){
+                c += arr[j];
+                if(arr[j]!=curr){
+                    yes = false;
+                    
+                    break;
+                }
+            }
+            if(yes){
+                ans = max(c , ans);
+            }
+            c = "";
+        }
+        cout << ans << "\n";
 	}
-} 
+	return 0;
+}
