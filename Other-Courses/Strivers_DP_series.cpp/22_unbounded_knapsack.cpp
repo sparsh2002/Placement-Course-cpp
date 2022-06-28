@@ -1,10 +1,7 @@
 #include<bits/stdc++.h>
 int solve(int i,int wt,vector<int>&value , vector<int>&weight , vector<vector<int>>&dp){
-    if(wt==0){
+    if(wt<=0){
         return 0;
-    }
-    if(wt<0){
-        return INT_MIN;
     }
     if(i==0){
         if(weight[i]<=wt){
