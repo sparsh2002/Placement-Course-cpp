@@ -12,3 +12,14 @@ int maximumProfit(vector<int> &arr){
     }
     return ans;
 }
+
+int maximumProfit(vector<int> &arr){
+    int n = arr.size();
+    int minn = INT_MAX;
+    int ans = 0;
+    for(int i=1 ; i<n ; i++){
+        minn = min(minn , arr[i-1]);
+        ans = max(ans , arr[i]-minn);
+    }
+    return ans;
+}
