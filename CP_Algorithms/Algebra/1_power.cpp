@@ -16,22 +16,24 @@ double EPS = 1e-9;
 const ll N = 10000000;
 double PI = acos(-1);
 
-void seive(){
-    int n;
-    cin >> n;
-    vector<bool> is_prime(n+1, true);
-    is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i * i <= n; i++) {
-        if (is_prime[i]) {
-            for (int j = i * i; j <= n; j += i)
-                is_prime[j] = false;
-        }
+int MOD = 1000000007;
+
+ll binPow(ll a, ll b){
+    ll res = 1;
+    while(b>0){
+        if(b&1)
+            res = res*a;
+
+        a = a * a;
+        b = b >> 1;
     }
+    return res;
 }
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    seive();
-
+    ll a,b;
+    cin >> a >> b;
+    cout << binPow(a , b) << "\n";
     return 0;
 }

@@ -15,23 +15,32 @@ long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 const ll N = 10000000;
 double PI = acos(-1);
+int MOD = 1000000007;
 
-void seive(){
-    int n;
-    cin >> n;
-    vector<bool> is_prime(n+1, true);
-    is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i * i <= n; i++) {
-        if (is_prime[i]) {
-            for (int j = i * i; j <= n; j += i)
-                is_prime[j] = false;
+
+void primeFactor(int n){
+    for(int i=2 ; i*i<=n ; i++){
+        if(n%i==0){
+            int ct = 0;
+            while(n%i==0){
+                ct++;
+                n = n/i;
+            }
+            cout << i << "^" << ct << "\n";
         }
     }
+    if(n>1){
+        cout << n << "^" << 1 << "\n";
+    }
+    
 }
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    seive();
+    int n;
+    cin >> n;
+    primeFactor(n);
 
     return 0;
 }

@@ -15,23 +15,29 @@ long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 const ll N = 10000000;
 double PI = acos(-1);
+int MOD = 1000000007;
 
-void seive(){
-    int n;
-    cin >> n;
-    vector<bool> is_prime(n+1, true);
-    is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i * i <= n; i++) {
-        if (is_prime[i]) {
-            for (int j = i * i; j <= n; j += i)
-                is_prime[j] = false;
-        }
-    }
-}
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    seive();
+    int maxx= 1;
+    string s;
+    cin >> s;
+    int n = s.size();
+    char curr = s[0];
+    int ct = 1;
+    for(int i=1 ; i<n ; i++){
+        if(s[i]==curr){
+            ct++;
+        }
+        else{
+            curr = s[i];
+            maxx = max(maxx, ct);
+            ct = 1;
+        }
+    }
+    maxx = max(maxx , ct);
+    cout << maxx << "\n";
 
     return 0;
 }
