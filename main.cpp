@@ -1,28 +1,48 @@
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-typedef vector<int> vi;
-typedef vector<vi> vvi;
-typedef vector<pii> vii;
-typedef vector<ll> vl;
-typedef vector<vl> vvl;
 
-#define rep(i,a,b) for(int i=a ; i<b ; i++)
+vector<int> bfsOfGraph(int v , vector<vector<int> > &adj){
+	vector<int> bfs;
+	vector<int> vis(v , 0);
 
-long long INFF = 1000000000000000005LL;
-double EPS = 1e-9;
-const ll N = 10000000;
-double PI = acos(-1);
+	for(int i=1 ; i<v ; i++){
+		if(!vis[i]){
+			queue<int> q;
+			q.push(i);
+			vis[i] = 1;
+			while(!q.empty()){
+				int node = q.front();
+				q.pop();
+				bfs.push_back(node);
+
+
+				for(int j=0 ; j<adj[node].size() ; j++){
+					if(!vis[adj[node][j]]){
+						q.push(adj[node][j]);
+						vis[adj[node][j]] = 1;
+					}
+				}
+			}
+		}
+	}
+
+	return bfs;
+}
+
+void dfsOfGraph(int node , vector<vector<int> >  &adj , vector<bool> &vis , vector<int> &dfs){
+	dfs.push_back(node);
+	vis[node] = true;
+	for(int i=0 ; i<adj[node].size() ; i++){
+		if(!vis[adj[node][i]]){
+			dfsOfGraph(adj[node][i] , adj, vis , dfs);
+		}
+	}
+}
+
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    int arr[] = {1,2,3,4,5};
-    for(auto x:arr){
-        cout << x << "\n";
-    }
-
-    return 0;
+	int n;
+	cin >> n;
+	cout << n+2 ;
+	return 0;
 }
