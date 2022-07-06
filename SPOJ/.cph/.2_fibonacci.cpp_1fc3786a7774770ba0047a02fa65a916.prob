@@ -1,0 +1,1 @@
+{"name":"Local: 2_fibonacci","url":"/Users/sparshjhariya/Desktop/TECHY/Placement-Course-cpp/SPOJ/2_fibonacci.cpp","tests":[{"id":1657125079515,"input":"5\n1\n2\n3\n4\n5","output":"1\n1\n2\n3\n5\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/sparshjhariya/Desktop/TECHY/Placement-Course-cpp/SPOJ/2_fibonacci.cpp","group":"local","local":true}
