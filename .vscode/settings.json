@@ -29,7 +29,12 @@
         "regex": "cpp",
         "utility": "cpp",
         "unordered_map": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "string_view": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": true,
