@@ -10,7 +10,7 @@ typedef vector<ll> vl;
 typedef vector<vl> vvl;
 
 #define rep(i,a,b) for(int i=a ; i<b ; i++)
-#define sort_v(arr) sort(arr.begin() , arr.end());
+#define sort(arr) sort(arr.begin() , arr.end());
 #define max_el(arr) *max_element(arr.begin() , arr.end());
 #define min_el(arr) *min_element(arr.begin() , arr.end());
 #define rep_rev(i , a, b) for(int i=a ; i>b ; i--)
@@ -21,35 +21,39 @@ const ll N = 10000000;
 double PI = acos(-1);
 int MOD = 1000000007;
 
+ll n, x;
+vl arr;
+map<int,int> mp;
+vector<int> solve(){
+    vector<int> ans;
+    rep(i , 0, n) mp[arr[i]] = i;
+    rep(i , 0, n){
+        if(mp.find(x-arr[i])!=mp.end()){
+            if(i+1 != mp[x-arr[i]]+1){
+                ans.push_back(i+1);
+                ans.push_back(mp[x-arr[i]]+1);
+                return ans;
+            }
+        }
+    }
+    return ans;
+}
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ll n,m,k;
-    cin >> n >> m >> k;
-    vl ap(n);
-    multiset<ll> cus;
-    rep(i , 0, n)  cin >> ap[i];
-    rep(i , 0 , m) {
-        ll x;
-        cin >> x;
-        cus.insert(x);
-    }
+    cin >> n >> x;
+    arr.resize(n);
+    rep(i , 0 ,n) cin >> arr[i];
+    mp.clear();
+    
+    vector<int> ans = solve();
 
-    sort_v(ap);
-    multiset<ll>::iterator  it;
-    int ct = 0;
-    rep(i , 0, n){
-        int x = ap[i];
-        it = cus.lower_bound(x-k);
-        if(it==cus.end()){
-            break;
-        }
-        if(abs(*it - x)<=k){
-            ct++;
-            cus.erase(it);
-        }
+    if(ans.size()==0){
+        cout << "IMPOSSIBLE" << "\n";
     }
-
-    cout << ct << "\n";
+    else{
+        cout << ans[0] <<  " " << ans[1] << "\n";
+    }
     return 0;
 }

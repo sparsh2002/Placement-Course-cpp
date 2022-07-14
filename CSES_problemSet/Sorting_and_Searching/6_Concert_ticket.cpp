@@ -24,32 +24,31 @@ int MOD = 1000000007;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ll n,m,k;
-    cin >> n >> m >> k;
-    vl ap(n);
-    multiset<ll> cus;
-    rep(i , 0, n)  cin >> ap[i];
-    rep(i , 0 , m) {
-        ll x;
+    int n , m;
+    cin >>  n >> m;
+    multiset<int> ticket;
+    rep(i , 0 , n){
+        int x;
         cin >> x;
-        cus.insert(x);
+        ticket.insert(x);
+    }
+    vi cus(m);
+
+    rep(i , 0 , m) cin >> cus[i];
+
+    multiset<int>::iterator it;
+    rep(i , 0, m){
+        int x = cus[i];
+        it = ticket.lower_bound(x);
+        it = ticket.upper_bound(x);
+		if (it==ticket.begin()){
+			cout << -1 << "\n";
+		}
+		else{
+			cout << *(--it) << "\n";
+			ticket.erase(it);
+		}
     }
 
-    sort_v(ap);
-    multiset<ll>::iterator  it;
-    int ct = 0;
-    rep(i , 0, n){
-        int x = ap[i];
-        it = cus.lower_bound(x-k);
-        if(it==cus.end()){
-            break;
-        }
-        if(abs(*it - x)<=k){
-            ct++;
-            cus.erase(it);
-        }
-    }
-
-    cout << ct << "\n";
     return 0;
 }

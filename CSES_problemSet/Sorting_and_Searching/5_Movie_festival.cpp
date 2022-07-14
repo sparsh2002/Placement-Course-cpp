@@ -21,32 +21,30 @@ const ll N = 10000000;
 double PI = acos(-1);
 int MOD = 1000000007;
 
+bool cmp(pair<ll,ll> &a , pair<ll,ll> &b){
+    return a.second < b.second;
+}
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ll n,m,k;
-    cin >> n >> m >> k;
-    vl ap(n);
-    multiset<ll> cus;
-    rep(i , 0, n)  cin >> ap[i];
-    rep(i , 0 , m) {
-        ll x;
-        cin >> x;
-        cus.insert(x);
+    int n;
+    cin >> n;
+    vector<pair<ll,ll> > arr(n);
+    rep(i,0,n){
+        ll s , e;
+        cin >> s >> e;
+        arr[i] = make_pair(s , e);
     }
 
-    sort_v(ap);
-    multiset<ll>::iterator  it;
-    int ct = 0;
-    rep(i , 0, n){
-        int x = ap[i];
-        it = cus.lower_bound(x-k);
-        if(it==cus.end()){
-            break;
-        }
-        if(abs(*it - x)<=k){
+    sort(arr.begin() , arr.end() , cmp);
+
+    int ct = 1;
+    ll end = arr[0].second;
+    rep(i ,1 , n){
+        if(arr[i].first>=end){
+            end = arr[i].second;
             ct++;
-            cus.erase(it);
         }
     }
 
