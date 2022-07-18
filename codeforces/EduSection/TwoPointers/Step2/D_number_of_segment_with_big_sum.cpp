@@ -26,7 +26,7 @@ int main(){
     cin.tie(0);
     int n;
     unsigned long long k;
-    cin >> n >> k;   
+    cin >> n >> k;     
     vl arr(n);
     rep(i , 0 , n) cin >> arr[i];
 
