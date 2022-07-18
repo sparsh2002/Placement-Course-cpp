@@ -24,18 +24,35 @@ int MOD = 1000000007;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ll n, s;
-    cin >> n >> s;
-    vl a(n);
-    for (int i  = 1; i <= n; i++) cin >> a[i];
-    ll l = 1, r = 1, sum = 0, res = 0;
-    while(l <= n){
-        while(r <= n && sum < s) sum += a[r++];
-        if (sum < s) break;
+    int n;
+    unsigned long long k;
+    cin >> n >> k;
+    vl arr(n);
+    rep(i , 0 , n) cin >> arr[i];
 
-        res += n - r + 2;
-        sum -= a[l++];
+    int i=0  , j=0;
+    unsigned long long sum = 0;
+    unsigned long long ct =0;
+    while(j<n){
+        sum += arr[j];
+        if(sum<=k){
+            ct += (unsigned long long)(j-i+1)*(j-i+2)/2;
+            j++;
+        }
+        else if(sum>k){
+            while(i<j and sum>k){
+                sum -= arr[i];
+                i++;
+            }
+            if(sum<=k){
+                ct += (unsigned long long)(j-i+1)*(j-i+2)/2;
+            }
+            j++;
+        }
+
+        
     }
-    cout << res << endl;
+
+    cout << ct;
     return 0;
 }

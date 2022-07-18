@@ -24,18 +24,17 @@ int MOD = 1000000007;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ll n, s;
-    cin >> n >> s;
-    vl a(n);
-    for (int i  = 1; i <= n; i++) cin >> a[i];
-    ll l = 1, r = 1, sum = 0, res = 0;
-    while(l <= n){
-        while(r <= n && sum < s) sum += a[r++];
-        if (sum < s) break;
-
-        res += n - r + 2;
-        sum -= a[l++];
+    ll n,d;
+    cin >> n >> d;
+    vl arr(n);
+    rep(i , 0 , n) cin >> arr[i];
+    int i = 0 , j = n-1;
+    if(arr[j]-arr[i]<=d){
+        cout << 0 << "\n";
     }
-    cout << res << endl;
+    else{
+        
+    }
+
     return 0;
 }
