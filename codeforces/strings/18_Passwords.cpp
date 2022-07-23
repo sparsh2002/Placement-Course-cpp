@@ -48,10 +48,6 @@ int main(){
         }
     }
     int bestcase = 0 , worstcase = 0;
-
-   
-   
-
    
     bestcase = countForBest + (countForBest/k)*5 + 1;
     worstcase = countForWorst  + ((countForWorst-1)/k)*5;
