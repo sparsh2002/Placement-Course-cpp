@@ -29,37 +29,43 @@ int main(){
     cin.tie(0);
     int n;
     cin >> n;
-    vector<list<string> > arr;
-    for(int i=0 ; i<n ; i++){
-        string prev,curr;
-        cin >> prev >> curr;
-        if(arr.empty()){
-            list<string> l;
-            l.push_back(prev);
-			l.push_back(curr);
+    set<string> st;
+    vector<vector<vector<string> > > arr;
+    rep(i, 0, n){
+        string oldName , newName;
+        cin >> oldName >>  newName;
+        if(st.find(newName)==st.end() and st.find(oldName)==st.end()){
+            vector<vector<string> > l;
+            vector<string> temp;
+            temp.push_back(oldName);
+            temp.push_back(newName);
+            l.push_back(temp);
             arr.push_back(l);
+            st.insert(newName);
+            st.insert(oldName);
         }
-        else{
-            for(int j=0 ; j<arr.size() ; j++){
-                list <string> temp = arr[j];
-				// cout << temp.back() << "\n";
-                if(temp.back()==prev){
-					temp.push_back(curr);
-					arr[j] = temp;
-				}
-				else{
-					list<string> l;
-					l.push_back(prev);
-					l.push_back(curr);
-					arr.push_back(l);
-				}
+        else if(st.find(oldName)!=st.end()){
+            rep(i , 0 , arr.size()){
+                vector<vector<string> > l = arr[i];
+                if(l[l.size()-1][1]==oldName){
+                    vector<string> temp;
+                    temp.push_back(oldName);
+                    temp.push_back(newName);
+                    l.push_back(temp);
+                    arr[i] = l;
+                    st.insert(newName);
+                    break;
+                }
             }
         }
     }
-	// cout << arr.size() << "\n";
-	// for(auto it:arr){
-	// 	cout << it.front() << " " << it.back() << "\n";
-	// }
+
+    cout << arr.size() << "\n";
+    // sort(arr.begin() , arr.end());
+    rep(i , 0 , arr.size()){
+        vector<vector<string> > temp = arr[i];
+        cout << temp[0][0] << " " << temp[temp.size()-1][1] << "\n";
+    }
 
     return 0;
 }
