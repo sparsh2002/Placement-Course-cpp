@@ -28,10 +28,19 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int t;
-    cin >> t;
-    while(t--){
-
+    int n, m , a , b;
+    cin >> n >> m >> a >> b;
+    int minn = INT_MAX;
+    rep(x , 0 , n+1){
+        rep(y , 0 , n+1){
+            if(x + m*y >=n){
+                int cost = x*a + b*y;
+                minn = min(minn , cost);
+            }
+        }
     }
+
+    cout << minn << "\n";
 
     return 0;
 }
