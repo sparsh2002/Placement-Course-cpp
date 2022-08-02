@@ -18,6 +18,7 @@ double PI = acos(-1);
 int MOD = 1000000007;
 
 
+
 void primeFactor(int n){
     for(int i=2 ; i*i<=n ; i++){
         if(n%i==0){

@@ -36,7 +36,9 @@
         "initializer_list": "cpp",
         "string_view": "cpp",
         "map": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "memory": "cpp",
+        "span": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": true,
