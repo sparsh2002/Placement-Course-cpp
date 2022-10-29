@@ -63,10 +63,10 @@ void update(int node , int st , int en , int idx , int val){
 
     int mid = (st+end)/2;
     if(idx<=mid){
-        update[2*node , st, mid , idx, val);
+        update(2*node , st, mid , idx, val);
     }
     else{
-        update[2*node , mid+1, en , idx, val);
+        update(2*node , mid+1, en , idx, val);
     }
 
     tree[node] = max(tree[2*node] , tree[2*node+1]);
