@@ -25,12 +25,50 @@ const ll N = 10000000;
 double PI = acos(-1);
 int MOD = 1000000007;
 
-int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(0);
-	string a = "three";
-	string b = "one";
-	cout << (a>b) << "\n";
 
-	return 0;
+bool good(ll x , ll k , vl &a , vl &b){
+    ll requirement = 0;
+    for(int i=0 ;i<a.size() ; i++){
+        // if((a[i]*x)>b[i]){
+            requirement += max(0ll ,(a[i]*x)- b[i]);
+        // }
+    }
+
+    // cout << x << " " << requirement << "\n";
+
+    return (requirement<=k);
+   
+}
+
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    ll n , k;
+    cin >> n >>k;
+    vl a(n);
+    read(a, n);
+    vl b(n);
+    read(b, n);
+
+    ll low = 0 , high = 1e9+1;
+
+    ll ans = 0;
+
+    while(low<=high){
+        ll mid = low  +(high-low)/2;
+        // cout << low << " " << mid  << " " <<  high << "\n";
+        if(good(mid , k , a , b)){
+            // cout << "yes" << "\n";
+            ans = mid;
+            low = mid+1;
+        }
+        else{
+            high = mid-1;
+        }
+
+    }
+
+    cout << ans << "\n";
+
+    return 0;
 }
