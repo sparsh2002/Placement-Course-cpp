@@ -25,13 +25,35 @@ const ll N = 10000000;
 double PI = acos(-1);
 int MOD = 1000000007;
 
-
 int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(0);
-	string a = "three";
-	string b = "one";
-	cout << (a>b) << "\n";
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int n,m;
+    cin >> n >> m;
+    vii arr(m);
+    vector<bool> invalid(n+1, false);
+    rep(i , 0, m){
+        int a , b;
+        cin >> a >> b;
+        invalid[a] = true;
+        invalid[b] = true;
 
-	return 0;
+        arr[i] = make_pair(a , b);
+    }
+
+    rep(i , 1 , n+1){
+        if(invalid[i] == false){
+            cout << n-1 << "\n";
+            rep(j , 1 , n+1){
+                if(j!=i){
+                    cout << j << " " << i << "\n";
+                }
+            }
+
+
+            return 0;
+        }
+    }
+
+    return 0;
 }
