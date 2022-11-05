@@ -25,16 +25,40 @@ const ll N = 10000000;
 double PI = acos(-1);
 int MOD = 1000000007;
 
+bool static cmp(pii &a , pii&b){
+    if(a.second==b.second){
+        return a.first>b.first;
+    }
+
+    return a.second>b.second;
+}
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int n;
     cin >> n;
+    vii arr(n);
     rep(i ,0 , n){
         int a , b;
         cin >> a >> b;
         
+        arr[i] = make_pair(a , b);
     }
+
+    sort(arr.begin() , arr.end() , cmp);
+
+    int sum = 0;
+    int ct = 1;
+    int i=0;
+    while(ct!=0 and i<n){
+        ct--;
+        sum += arr[i].first;
+        ct += arr[i].second;
+        i++;
+    }
+
+    cout << sum << "\n";
 
     return 0;
 }
