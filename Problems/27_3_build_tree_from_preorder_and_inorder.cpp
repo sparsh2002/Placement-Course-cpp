@@ -22,6 +22,15 @@ int search(int preorder[] , int start , int end , int curr){
     return -1;
 }
 
+
+int gcd(int a , int b){
+    if(a==0){
+        return b;
+    }
+    return gcd(b%a , a);
+}
+
+
 Node* buildTree(int preorder[] , int inorder[] , int start , int end){
     static int idx = 0;
     if(start>end){
