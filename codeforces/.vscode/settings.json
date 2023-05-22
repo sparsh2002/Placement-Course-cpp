@@ -3,6 +3,16 @@
         "iostream": "cpp",
         "ios": "cpp",
         "vector": "cpp",
-        "random": "cpp"
-    }
+        "random": "cpp",
+        "map": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "set": "cpp",
+        "span": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "stacktrace": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
