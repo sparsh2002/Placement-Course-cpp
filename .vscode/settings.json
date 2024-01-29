@@ -38,7 +38,13 @@
         "map": "cpp",
         "numeric": "cpp",
         "memory": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "__tree": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "format": "cpp",
+        "ranges": "cpp",
+        "stacktrace": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": true,
